@@ -5,7 +5,7 @@
 
 
 int main(){
-	int a[10];
+	int a[20];
 	void *hd;
 	char *error;
 	void(*f1)(),(*f2)();
@@ -36,10 +36,10 @@ int main(){
 		exit(1);
 	}
 
-	f2(a,10);
-	f1(a,10);
-	printf("\nmax = %d",f3(a,10));
-	printf("\nmax = %d\n",f4(a,10));
+	f2(a,20);
+	f1(a,20);
+	printf("\nmax = %d",f3(a,20));
+	printf("\nmax = %d\n",f4(a,20));
 
 	if(dlclose(hd)<0){
 		fprintf(stderr,"%s\n",dlerror);	
