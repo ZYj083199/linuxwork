@@ -1,12 +1,29 @@
-#include<stdio.h>
-#include<unistd.h>
-int main()
+#include "my.h"
+static void __attribute__((constructor))before_main()
 {
-	char *args[]={"/home/lsy1999/Desktop/test/test",NULL};
-	printf("系统分配的进程号(PID)是：%d\n",getpid());
-	if(execve("/home/lsy1999/Desktop/test/test",args,NULL)<0)
-	{
-		perror("用execve创建进程出错\n");
-	}
-	return 1;
+	printf("running before main1\n");
+}
+static void callback1()
+{
+	printf("1：Running after main:\n");
+}
+static void callback2()
+{
+	printf("2：Running after main:\n");
+}
+static void callback3()
+{
+	printf("3：Running after main:\n");
+}
+int main(int argc,char *argv[])
+{
+	atexit(callback1);
+	atexit(callback2);
+	atexit(callback3);
+	printf("test1:pid=%d,PPid=%d\n",getpid(),getppid());
+	for(int i=0;i<argc;i++)
+		printf("test3:arg[%d]:%s\n",i,argv[i]);
+	sleep(2);
+	printf("test3 finish running!\n");
+   return 0;
 }
