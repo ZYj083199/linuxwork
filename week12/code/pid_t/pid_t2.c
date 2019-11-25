@@ -24,15 +24,15 @@ int main()
 			while(wait(getppid()));
 			close(pipe_fd[1]);
 			
-			if((r_num=read(pipe_fd[0],buf_r,6000))>0)
-				printf("子进程从管道读取%d个字符\n",r_num);
+			//if((r_num=read(pipe_fd[0],buf_r,6000))>0)
+				//printf("子进程从管道读取%d个字符\n",r_num);
 			close(pipe_fd[0]);
 			exit(0);
 		}
 		else
 		{	
 			close(pipe_fd[0]);
-			for(i=0;i<5000;i+=8)
+			for(i=0;i<=65544;i+=8)
 				if(write(pipe_fd[1],"12345678",8)!=-1)
 					printf("父进程向管道写入%d字节\n",i);
 			close(pipe_fd[1]);
