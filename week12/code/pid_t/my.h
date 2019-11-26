@@ -4,8 +4,9 @@
 #include <sys/types.h>
 #include <sys/param.h>
 #include <sys/stat.h>
-#include <wait.h>
+#include <sys/wait.h>
 #include <errno.h>
 #include <time.h>
+#include <fcntl.h>
 #include <string.h>
 
