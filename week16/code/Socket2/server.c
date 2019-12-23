@@ -39,7 +39,7 @@ int main(void)
 	bzero(&my_addr, sizeof(struct sockaddr_in));
 	my_addr.sin_family=AF_INET;	/*地址族*/
 	my_addr.sin_port=htons(SERVPORT);	/*端口号为4444*/
-	inet_aton("127.0.0.1", &my_addr.sin_addr);
+	inet_aton("192.168.1.103", &my_addr.sin_addr);
 
 	if (bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) == -1) 
 	{        /*错误检测*/
